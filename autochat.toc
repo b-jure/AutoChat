@@ -1,0 +1,9 @@
+## Interface: 50408
+## Title: AutoChat
+## Notes: Automatically send channel chat messages.
+## Version: 1.0
+## DefaultState: enabled
+
+autochat.lua
+autochatui.lua
+autochatinit.lua

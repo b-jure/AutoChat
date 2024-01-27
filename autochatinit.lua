@@ -73,6 +73,7 @@ end
 function addon:AC_Init()
     self.Name = "AC"
     self.MainFrame = self.MainFrame or self:AC_CreateUI() -- generate UI
+    self.MainFrame:Hide()
     self.EventFrame = self.EventFrame or self:AC_CreateEventFrame()
     self.EventFrame:Show()
     EnableSlashCommands()

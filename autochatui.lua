@@ -18,6 +18,8 @@ function addon:AC_CreateUI()
     Title:SetText("AutoChat")
     Title:ClearAllPoints()
     Title:SetPoint("TOPLEFT", MainFrame, "TOPLEFT", 5, -5)
+    local CloseButton = MainFrame.CloseButton
+    CloseButton:SetScript("OnClick", function(_, _, down) if not down then MainFrame:Hide() end end)
 
     -- Start button [https://www.townlong-yak.com/framexml/5.4.8/SharedUIPanelTemplates.xml#301]
     local StartButton = MainFrame.StartButton

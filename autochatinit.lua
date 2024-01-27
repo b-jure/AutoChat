@@ -64,11 +64,18 @@ local function EnableSlashCommands()
     SlashCmdList.AutoChat = SlashCommand
 end
 
+function addon:AC_CreateEventFrame()
+    local EventFrame = CreateFrame("Frame", nil, UIParent)
+    EventFrame:HookScript("OnUpdate", function(_, elapsed) addon:AC_OnUpdate(elapsed) end)
+    return EventFrame
+end
+
 function addon:AC_Init()
     self.Name = "AC"
     self.MainFrame = self.MainFrame or self:AC_CreateUI() -- generate UI
+    self.EventFrame = self.EventFrame or self:AC_CreateEventFrame()
     self.MainFrame:Show()
-    self.MainFrame:HookScript("OnUpdate", function(_, elapsed) addon:AC_OnUpdate(elapsed) end)
+    self.EventFrame:Show()
     EnableSlashCommands()
 end
 

@@ -12,18 +12,19 @@ end
 -- Send Chat Message
 function addon:AC_SendMessage()
     local id = tonumber(self:AC_GetEditBoxText("ChannelEditBox"), 10)
-    if not id then
+    if id == nil then
         self:AC_Print("Invalid or missing 'ID")
+        self:AC_Stop()
         return
     end
     addon.AC_ID = math.abs(id)
     local message = _G["ACScrollFrame"].EditBox:GetText()
-    if (message == "" or not message) then
+    if (message == "" or message == nil) then
         self:AC_Print("Invalid or missing 'message'")
         self:AC_Stop()
         return
     end
-    SendChatMessage(message, "CHANNEL", "COMMON", GetChannelName(addon.AC_ID))
+    SendChatMessage(message, "CHANNEL", "COMMON", tostring(addon.AC_ID))
 end
 
 -- Frame OnUpdate handler
@@ -47,9 +48,8 @@ end
 -- Start AutoChat
 function addon:AC_Start()
     if self.AC_Interval > 0 then return end -- if already started just return
-    local dbg = self:AC_GetEditBoxText("IntervalEditBox")
     local interval = tonumber(self:AC_GetEditBoxText("IntervalEditBox")) or 0
-    if not interval or interval == 0 then
+    if interval == nil or interval == 0 then
         self:AC_Print("Invalid 'Interval'")
         self:AC_Stop()
         return

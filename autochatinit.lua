@@ -9,7 +9,7 @@ addon.AC_Commands = {
         addon:AC_Print("/ac toggle  - toggle AutoChat UI")
         addon:AC_Print("/ac start   - start AutoChat")
         addon:AC_Print("/ac stop  - stop AutoChat")
-        addon:AC_Print("/ac isrun  - print wheter AutoChat is running")
+        addon:AC_Print("/ac isrun  - print whether AutoChat is running")
     end,
     open = function() addon.MainFrame:Show() end,
     close = function() addon.MainFrame:Hide() end,
